@@ -1,75 +1,43 @@
 package com.scoreanalysis.bean;
 
-import java.util.Date;
-
 public class Student {
-    private Integer stuId;
+    private String sid;
 
-    private String stuName;
+    private String sname;
 
-    private String stuSex;
+    private String sclass;
 
-    private Date stuTime;
+    private String smajor;
 
-    private Integer clsId;
-
-    private String stuAddress;
-
-    private Integer stuState;
-
-    public Integer getStuId() {
-        return stuId;
+    public String getSid() {
+        return sid;
     }
 
-    public void setStuId(Integer stuId) {
-        this.stuId = stuId;
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
-    public String getStuName() {
-        return stuName;
+    public String getSname() {
+        return sname;
     }
 
-    public void setStuName(String stuName) {
-        this.stuName = stuName;
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 
-    public String getStuSex() {
-        return stuSex;
+    public String getSclass() {
+        return sclass;
     }
 
-    public void setStuSex(String stuSex) {
-        this.stuSex = stuSex;
+    public void setSclass(String sclass) {
+        this.sclass = sclass;
     }
 
-    public Date getStuTime() {
-        return stuTime;
+    public String getSmajor() {
+        return smajor;
     }
 
-    public void setStuTime(Date stuTime) {
-        this.stuTime = stuTime;
-    }
-
-    public Integer getClsId() {
-        return clsId;
-    }
-
-    public void setClsId(Integer clsId) {
-        this.clsId = clsId;
-    }
-
-    public String getStuAddress() {
-        return stuAddress;
-    }
-
-    public void setStuAddress(String stuAddress) {
-        this.stuAddress = stuAddress;
-    }
-
-    public Integer getStuState() {
-        return stuState;
-    }
-
-    public void setStuState(Integer stuState) {
-        this.stuState = stuState;
+    public void setSmajor(String smajor) {
+        this.smajor = smajor;
     }
 }

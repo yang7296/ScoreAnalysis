@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.scoreanalysis.mapper.StudentMapper">
-  <resultMap id="BaseResultMap" type="com.scoreanalysis.bean.Student">
-    <id column="sid" jdbcType="VARCHAR" property="sid" />
-    <result column="sname" jdbcType="VARCHAR" property="sname" />
-    <result column="sclass" jdbcType="VARCHAR" property="sclass" />
-    <result column="smajor" jdbcType="VARCHAR" property="smajor" />
+<mapper namespace="com.scoreanalysis.mapper.StuClassMapper">
+  <resultMap id="BaseResultMap" type="com.scoreanalysis.bean.StuClass">
+    <id column="clsid" jdbcType="VARCHAR" property="clsid" />
+    <result column="clsname" jdbcType="VARCHAR" property="clsname" />
+    <result column="cls_major" jdbcType="VARCHAR" property="clsMajor" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,16 +65,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    sid, sname, sclass, smajor
+    clsid, clsname, cls_major
   </sql>
-  <select id="selectByExample" parameterType="com.scoreanalysis.bean.StudentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.scoreanalysis.bean.StuClassExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from student
+    from stu_class
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,76 +85,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from student
-    where sid = #{sid,jdbcType=VARCHAR}
+    from stu_class
+    where clsid = #{clsid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from student
-    where sid = #{sid,jdbcType=VARCHAR}
+    delete from stu_class
+    where clsid = #{clsid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.scoreanalysis.bean.StudentExample">
-    delete from student
+  <delete id="deleteByExample" parameterType="com.scoreanalysis.bean.StuClassExample">
+    delete from stu_class
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.scoreanalysis.bean.Student">
-    insert into student (sid, sname, sclass, 
-      smajor)
-    values (#{sid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{sclass,jdbcType=VARCHAR}, 
-      #{smajor,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.scoreanalysis.bean.StuClass">
+    insert into stu_class (clsid, clsname, cls_major
+      )
+    values (#{clsid,jdbcType=VARCHAR}, #{clsname,jdbcType=VARCHAR}, #{clsMajor,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.scoreanalysis.bean.Student">
-    insert into student
+  <insert id="insertSelective" parameterType="com.scoreanalysis.bean.StuClass">
+    insert into stu_class
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sid != null">
-        sid,
+      <if test="clsid != null">
+        clsid,
       </if>
-      <if test="sname != null">
-        sname,
+      <if test="clsname != null">
+        clsname,
       </if>
-      <if test="sclass != null">
-        sclass,
-      </if>
-      <if test="smajor != null">
-        smajor,
+      <if test="clsMajor != null">
+        cls_major,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sid != null">
-        #{sid,jdbcType=VARCHAR},
+      <if test="clsid != null">
+        #{clsid,jdbcType=VARCHAR},
       </if>
-      <if test="sname != null">
-        #{sname,jdbcType=VARCHAR},
+      <if test="clsname != null">
+        #{clsname,jdbcType=VARCHAR},
       </if>
-      <if test="sclass != null">
-        #{sclass,jdbcType=VARCHAR},
-      </if>
-      <if test="smajor != null">
-        #{smajor,jdbcType=VARCHAR},
+      <if test="clsMajor != null">
+        #{clsMajor,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.scoreanalysis.bean.StudentExample" resultType="java.lang.Long">
-    select count(*) from student
+  <select id="countByExample" parameterType="com.scoreanalysis.bean.StuClassExample" resultType="java.lang.Long">
+    select count(*) from stu_class
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update student
+    update stu_class
     <set>
-      <if test="record.sid != null">
-        sid = #{record.sid,jdbcType=VARCHAR},
+      <if test="record.clsid != null">
+        clsid = #{record.clsid,jdbcType=VARCHAR},
       </if>
-      <if test="record.sname != null">
-        sname = #{record.sname,jdbcType=VARCHAR},
+      <if test="record.clsname != null">
+        clsname = #{record.clsname,jdbcType=VARCHAR},
       </if>
-      <if test="record.sclass != null">
-        sclass = #{record.sclass,jdbcType=VARCHAR},
-      </if>
-      <if test="record.smajor != null">
-        smajor = #{record.smajor,jdbcType=VARCHAR},
+      <if test="record.clsMajor != null">
+        cls_major = #{record.clsMajor,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,35 +153,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update student
-    set sid = #{record.sid,jdbcType=VARCHAR},
-      sname = #{record.sname,jdbcType=VARCHAR},
-      sclass = #{record.sclass,jdbcType=VARCHAR},
-      smajor = #{record.smajor,jdbcType=VARCHAR}
+    update stu_class
+    set clsid = #{record.clsid,jdbcType=VARCHAR},
+      clsname = #{record.clsname,jdbcType=VARCHAR},
+      cls_major = #{record.clsMajor,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.scoreanalysis.bean.Student">
-    update student
+  <update id="updateByPrimaryKeySelective" parameterType="com.scoreanalysis.bean.StuClass">
+    update stu_class
     <set>
-      <if test="sname != null">
-        sname = #{sname,jdbcType=VARCHAR},
+      <if test="clsname != null">
+        clsname = #{clsname,jdbcType=VARCHAR},
       </if>
-      <if test="sclass != null">
-        sclass = #{sclass,jdbcType=VARCHAR},
-      </if>
-      <if test="smajor != null">
-        smajor = #{smajor,jdbcType=VARCHAR},
+      <if test="clsMajor != null">
+        cls_major = #{clsMajor,jdbcType=VARCHAR},
       </if>
     </set>
-    where sid = #{sid,jdbcType=VARCHAR}
+    where clsid = #{clsid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.scoreanalysis.bean.Student">
-    update student
-    set sname = #{sname,jdbcType=VARCHAR},
-      sclass = #{sclass,jdbcType=VARCHAR},
-      smajor = #{smajor,jdbcType=VARCHAR}
-    where sid = #{sid,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.scoreanalysis.bean.StuClass">
+    update stu_class
+    set clsname = #{clsname,jdbcType=VARCHAR},
+      cls_major = #{clsMajor,jdbcType=VARCHAR}
+    where clsid = #{clsid,jdbcType=VARCHAR}
   </update>
 </mapper>
