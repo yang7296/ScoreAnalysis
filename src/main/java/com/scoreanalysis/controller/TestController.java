@@ -20,8 +20,8 @@ public class TestController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping(value = "/student")
-    public Student getStudentById(@RequestParam("id") String id){
+    @RequestMapping(value = "/student/{id}")
+    public Student getStudentById(@PathVariable("id") String id){
         return studentService.getStudentById(id);
     }
 }
