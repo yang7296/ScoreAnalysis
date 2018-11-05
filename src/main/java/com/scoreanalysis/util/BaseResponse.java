@@ -6,7 +6,7 @@ package com.scoreanalysis.util;
  * @Description 所有Controller的返回格式都为该格式
  * @Date 2018/11/4 18:11
  */
-public class BaseResponse<T> {
+public class BaseResponse {
 
     /** 返回的状态码 */
     private Integer code;
@@ -15,7 +15,7 @@ public class BaseResponse<T> {
     private String msg;
 
     /** 返回的数据 */
-    private T data;
+    private Object data;
 
     public Integer getCode() {
         return code;
@@ -33,11 +33,11 @@ public class BaseResponse<T> {
         this.msg = msg;
     }
 
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 }

@@ -1,33 +1,33 @@
 package com.scoreanalysis.bean;
 
 public class Plan {
-    private String planId;
+    private String planid;
 
-    private String palnName;
+    private String planname;
 
-    private String planYear;
+    private String planyear;
 
-    public String getPlanId() {
-        return planId;
+    public String getPlanid() {
+        return planid;
     }
 
-    public void setPlanId(String planId) {
-        this.planId = planId;
+    public void setPlanid(String planid) {
+        this.planid = planid;
     }
 
-    public String getPalnName() {
-        return palnName;
+    public String getPlanname() {
+        return planname;
     }
 
-    public void setPalnName(String palnName) {
-        this.palnName = palnName;
+    public void setPlanname(String planname) {
+        this.planname = planname;
     }
 
-    public String getPlanYear() {
-        return planYear;
+    public String getPlanyear() {
+        return planyear;
     }
 
-    public void setPlanYear(String planYear) {
-        this.planYear = planYear;
+    public void setPlanyear(String planyear) {
+        this.planyear = planyear;
     }
 }

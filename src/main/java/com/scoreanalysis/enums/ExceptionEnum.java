@@ -7,7 +7,8 @@ package com.scoreanalysis.enums;
  * @Date 2018/11/4 18:32
  */
 public enum ExceptionEnum {
-
+    STUDENT_EXIST(101,"学生已经存在"),
+    STUDENT_NO_EXIST(102,"学生不存在")
     ;
 
     private Integer code;
