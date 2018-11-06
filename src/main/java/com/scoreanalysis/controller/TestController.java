@@ -50,6 +50,7 @@ public class TestController extends BaseController{
             return ajaxSucc(null,ResultEnum.SUCCESS);
         }else{
             return ajaxFail(ResultEnum.FAIL);
+
         }
     }
 }
