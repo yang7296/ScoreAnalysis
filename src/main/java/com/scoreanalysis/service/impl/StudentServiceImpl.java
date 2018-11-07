@@ -2,11 +2,15 @@ package com.scoreanalysis.service.impl;
 
 import com.scoreanalysis.bean.Student;
 import com.scoreanalysis.dao.StudentMapper;
+import com.scoreanalysis.daoExtend.StudentExtendMapper;
 import com.scoreanalysis.enums.ExceptionEnum;
 import com.scoreanalysis.exception.SAException;
+import com.scoreanalysis.pojo.StudentExtend;
 import com.scoreanalysis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @ClassName StudentServiceImpl
@@ -20,6 +24,8 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    private StudentExtendMapper studentExtendMapper;
     @Override
     public Student getStudentById(String id) {
         return studentMapper.selectByPrimaryKey(id);
@@ -41,5 +47,15 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public List<StudentExtend> getStudents() {
+        return studentExtendMapper.getStudents();
+    }
+
+    @Override
+    public String getStudentPlanId(String sId) {
+        String planId = studentExtendMapper.getStudentPlanId(sId);
+        return planId;
+    }
 
 }

@@ -2,10 +2,13 @@ package com.scoreanalysis.controller;
 
 import com.scoreanalysis.bean.Student;
 import com.scoreanalysis.enums.ResultEnum;
+import com.scoreanalysis.pojo.StudentExtend;
 import com.scoreanalysis.service.StudentService;
 import com.scoreanalysis.util.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @ClassName TestController
@@ -52,5 +55,19 @@ public class TestController extends BaseController{
             return ajaxFail(ResultEnum.FAIL);
 
         }
+    }
+
+    //获取全部学生
+    @RequestMapping(value = "/getStudents")
+    public BaseResponse getStudents(){
+        List<StudentExtend> students = studentService.getStudents();
+        return ajaxSucc(students,ResultEnum.SUCCESS);
+    }
+
+    @RequestMapping("/getStudentPlanId")
+    public BaseResponse getStudentPlanId(String id){
+        String planid = studentService.getStudentPlanId(id);
+        return ajaxSucc(planid,ResultEnum.SUCCESS);
+
     }
 }
